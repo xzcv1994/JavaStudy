@@ -6,6 +6,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpClientThread extends Thread {
+
+    HttpClientThread(String threadName) {
+        this.setName(threadName);
+
+    }
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getName() + "'s run() has been called!");

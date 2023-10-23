@@ -7,13 +7,10 @@ import java.net.URL;
 
 public class HttpClientRunnable implements Runnable{
 
-	private String threadName;
-
 	public HttpClientRunnable() {}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		System.out.println(Thread.currentThread().getName() + "'s run() has been called!");
 		URL url;
 		try {
@@ -30,7 +27,6 @@ public class HttpClientRunnable implements Runnable{
 			httpUrlConnection.disconnect();
 			System.out.println(Thread.currentThread().getName() + "'s result : " + result);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
