@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="org.apache.tomcat:tomcat-util:9.0.60" type="repository">
+    <properties maven-id="org.apache.tomcat:tomcat-util:9.0.60" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-util/9.0.60/tomcat-util-9.0.60.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/9.0.60/tomcat-juli-9.0.60.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
