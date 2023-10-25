@@ -13,10 +13,10 @@ public class EncryptWithAES {
     private final String secretKey = "thisis16byteskey";
 
     /**
-     * CBC, PADD 없는 AES 암호화
+     * 블록 암호화, 패딩 설정 없이 AES 암호화
      * 1. plain을 bytes로 변환
      * 2. bytes를 암호화 하여 encrypted bytes 생성
-     * 3. encrypted bytes를 base64로 string 인코딩(데이터 관리 편의를 위해)
+     * 3. encrypted bytes를 base64로 string 인코딩 처리(데이터 관리 편의를 위해)
      * 4. base 64 encoded encryptes bytes를 encrypted bytes로 디코딩
      * 5. encrypted bytes를 복호화 하여 decrypted bytes 생성
      * 6. decrypted bytes를 plain string으로 변환
@@ -28,18 +28,19 @@ public class EncryptWithAES {
 
         //암호화를 위한 Cipher 객체 생성
         Cipher cipher = Cipher.getInstance("AES");
+        System.out.println("plain str : " + plain);
 
         //Cipher 모드 설정 및 암호화
         cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] encryptedBytes = cipher.doFinal(plain.getBytes());
         String encrypted = Base64.getEncoder().encodeToString(encryptedBytes);
-        System.out.println("String After Encoding Encrypted Bytes : " + encrypted);
+        System.out.println("encrypted base64 str : " + encrypted);
 
         //Cipher 모드 설정 및 암호화
         cipher.init(Cipher.DECRYPT_MODE, key);
         byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encrypted));
         String decrypted = new String(decryptedBytes);
-        System.out.println("decrypted : " + decrypted);
+        System.out.println("decrypted str : " + decrypted + "\n");
     }
 
     /**
@@ -55,16 +56,17 @@ public class EncryptWithAES {
 
         //암호화를 위한 Cipher 객체 생성
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        System.out.println("plain str : " + plain);
 
         //Cipher 모드 설정 및 암호화
         cipher.init(Cipher.ENCRYPT_MODE, key, iv);
         byte[] encryptedBytes = cipher.doFinal(plain.getBytes());
         String encrypted = Base64.getEncoder().encodeToString(encryptedBytes);
-        System.out.println("String After Encoding Encrypted Bytes : " + encrypted);
+        System.out.println("encrypted base64 str : " + encrypted);
 
         cipher.init(Cipher.DECRYPT_MODE, key, iv);
         byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
         String decrypted = new String(decryptedBytes);
-        System.out.println("decrypted : " + decrypted);
+        System.out.println("decrypted str : " + decrypted + "\n");
     }
 }
